@@ -4,12 +4,14 @@ const ms = require('ms')
 
 const configure = require('./src/helpers/configure')
 
-const server = 'https://alchemy.now.sh'
+const server = 'https://hazel-server-offhfpvirb.now.sh'
 const feed = `${server}/update/${process.platform}/${app.getVersion()}`
 
 try {
   autoUpdater.setFeedURL(feed)
-} catch (e) { /* pass */ }
+} catch (e) { 
+  console.error('Error setting feed URL:', e)
+}
 
 setInterval(() => autoUpdater.checkForUpdates(), ms('10m'))
 
